@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presentasi Aplikasi NALAR</title>
+<style>
+:root{--coral:#ff5b4d;--coral2:#ff786b;--soft:#fff0ed;--ink:#252b36;--muted:#6f7785;--paper:#fffdfa;--line:#f0e5e2;--green:#36a875;--yellow:#f3b84b;--navy:#20283a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+.deck{height:100vh;width:100vw;position:relative}.slide{position:absolute;inset:0;padding:6.5vh 8vw 9vh;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateX(35px) scale(.99);pointer-events:none;transition:.5s ease;overflow:auto}.slide.active{opacity:1;transform:none;pointer-events:auto}
+.kicker{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--coral);margin-bottom:18px}.title{font-size:clamp(2.5rem,6vw,5.7rem);line-height:1.02;letter-spacing:-.055em;margin:0 0 22px;font-weight:850}.title span{color:var(--coral)}h2{font-size:clamp(2rem,4vw,3.7rem);letter-spacing:-.04em;line-height:1.08;margin:0 0 18px}h3{margin:0 0 8px;font-size:1.13rem}p{color:var(--muted);line-height:1.7;margin:0 0 12px;font-size:clamp(.94rem,1.3vw,1.08rem)}.lead{font-size:clamp(1.05rem,1.7vw,1.35rem);max-width:700px}.pill{display:inline-flex;align-items:center;gap:8px;background:var(--soft);color:var(--coral);padding:9px 14px;border-radius:100px;font-weight:750;font-size:.82rem}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center}.hero-art{min-height:420px;display:grid;place-items:center;position:relative}.orb{width:min(34vw,390px);aspect-ratio:1;border-radius:38% 62% 58% 42%;background:linear-gradient(145deg,#ff9b8f,#ff5b4d);transform:rotate(-9deg);box-shadow:0 35px 90px #ff5b4d35;display:grid;place-items:center}.device{width:58%;height:72%;border:9px solid #293143;border-radius:28px;background:#fff;transform:rotate(9deg);padding:17px;box-shadow:0 20px 50px #2223}.device-top{display:flex;justify-content:space-between;font-size:10px;color:#788}.mini-logo{font-weight:900;color:var(--coral);font-size:18px;margin:16px 0 10px}.mini-card{background:#fff0ed;border-radius:12px;padding:12px;margin:8px 0;font-size:10px;color:#414957}.mini-bars{display:flex;gap:5px;margin-top:12px}.mini-bars i{display:block;height:7px;border-radius:8px;background:#ff8b7f;flex:1}.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px 16px;box-shadow:0 14px 35px #252b3614;font-weight:750}.float.one{top:13%;right:2%}.float.two{bottom:12%;left:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.card{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 30px #252b3608}.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--soft);font-size:1.4rem;margin-bottom:15px}.card p{font-size:.92rem;margin:0}.split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.list{display:grid;gap:13px;margin-top:18px}.item{display:flex;gap:13px;align-items:flex-start}.num{flex:none;width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--coral);font-weight:850;display:grid;place-items:center}.diagram{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;min-height:300px;display:flex;flex-direction:column;justify-content:center;gap:14px}.node{background:var(--soft);border:1px solid #ffd8d2;border-radius:14px;padding:14px;text-align:center;font-weight:750}.node.dark{background:var(--navy);color:white;border-color:var(--navy)}.arrow{text-align:center;color:var(--coral);font-size:1.4rem;font-weight:900}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.chip{padding:9px 12px;border-radius:10px;background:#f5f6f8;color:#525d6d;font-size:.85rem;font-weight:700}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.stat{background:var(--navy);color:#fff;border-radius:18px;padding:20px}.stat b{display:block;font-size:2rem;color:#ff9b8f}.stat small{color:#c7ccda}.module-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.module{background:white;border:1px solid var(--line);padding:15px;border-radius:15px;min-height:90px}.module b{color:var(--coral);font-size:.82rem}.module span{display:block;font-weight:750;margin-top:7px;font-size:.92rem}.quote{font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.3;letter-spacing:-.03em;font-weight:800;max-width:850px}.quote em{color:var(--coral);font-style:normal}.footer{position:absolute;bottom:26px;left:8vw;right:8vw;display:flex;align-items:center;justify-content:space-between;color:#9298a3;font-size:.78rem;z-index:5}.controls{display:flex;align-items:center;gap:9px}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:50px;padding:10px 15px;cursor:pointer;font-weight:750}.btn.primary{background:var(--coral);color:white;border-color:var(--coral)}.progress{position:absolute;bottom:0;left:0;height:4px;background:var(--coral);width:0;transition:.3s;z-index:10}.counter{font-variant-numeric:tabular-nums}.brand{font-weight:900;letter-spacing:.1em;color:var(--coral)}.end{text-align:center;align-items:center}.end .title{max-width:900px}.note{font-size:.8rem;color:#969ba5;margin-top:15px}
+@media(max-width:760px){.slide{padding:7vh 7vw 12vh}.hero,.split{grid-template-columns:1fr}.hero-art{min-height:260px}.orb{width:230px}.grid{grid-template-columns:1fr 1fr}.module-grid{grid-template-columns:1fr 1fr}.statrow{grid-template-columns:1fr}.footer{left:7vw;right:7vw}.footer .brand{display:none}.float.one{right:0}.float.two{left:0}}
+@media(max-width:460px){.grid{grid-template-columns:1fr}.title{font-size:2.7rem}.hero-art{min-height:230px}}
+@media print{body{overflow:visible}.deck{height:auto}.slide{position:relative;opacity:1;transform:none;pointer-events:auto;height:100vh;page-break-after:always}.footer,.progress{display:none}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+<section class="slide active">
+ <div class="hero">
+  <div><div class="kicker">Presentasi Produk · Pengembangan Bahan Ajar</div><div class="pill">✦ Media belajar digital interaktif</div>
+   <h1 class="title" style="margin-top:22px">Belajar TJKT jadi lebih <span>terarah.</span></h1>
+   <p class="lead">Memperkenalkan <b>NALAR</b> — aplikasi pembelajaran yang menggabungkan materi, praktik simulasi, video, dan pendamping belajar dalam satu ruang digital.</p>
+   <div class="chips"><span class="chip">📚 Materi</span><span class="chip">🧪 Simulasi</span><span class="chip">🤖 Asisten AI</span></div>
+  </div>
+  <div class="hero-art"><div class="orb"><div class="device"><div class="device-top"><span>9:41</span><span>● ● ●</span></div><div class="mini-logo">NALAR.</div><div style="font-size:11px;font-weight:800">Halo, Siswa! 👋</div><div style="font-size:8px;color:#899">Siap melanjutkan belajar?</div><div class="mini-card"><b>Ringkasan Progres</b><div style="font-size:19px;color:#ff5b4d;font-weight:900;margin:7px 0">68%</div><div class="mini-bars"><i></i><i></i><i></i><i></i></div></div><div class="mini-card">📘 Modul TJKT　　›</div><div class="mini-card">🧪 Simulasi Praktik　›</div></div></div><div class="float one">📈 Progres belajar</div><div class="float two">💡 Belajar aktif</div></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">01 · Latar belakang</div><h2>Mengapa NALAR <span style="color:var(--coral)">dibuat?</span></h2>
+ <p class="lead">Pembelajaran TJKT tidak cukup hanya membaca teori. Siswa juga perlu melihat contoh, mencoba proses, dan mengukur pemahamannya.</p>
+ <div class="grid">
+  <div class="card"><div class="icon">📖</div><h3>Materi tersebar</h3><p>Sumber belajar dapat tersebar di banyak tempat sehingga siswa perlu ruang belajar yang lebih terorganisasi.</p></div>
+  <div class="card"><div class="icon">🧩</div><h3>Butuh praktik</h3><p>Konsep jaringan dan perangkat komputer lebih mudah dipahami melalui eksplorasi dan simulasi.</p></div>
+  <div class="card"><div class="icon">🎯</div><h3>Perlu pemantauan</h3><p>Progres, latihan, dan aktivitas belajar perlu dirangkum agar pembelajaran lebih terarah.</p></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">02 · Solusi</div><div class="split">
+  <div><h2>Satu aplikasi, banyak pengalaman belajar.</h2><p>NALAR dirancang sebagai pendamping pembelajaran TJKT dengan pengalaman yang menghubungkan kegiatan memahami, mencoba, dan mengevaluasi.</p>
+   <div class="list">
+    <div class="item"><div class="num">1</div><div><h3>Pahami</h3><p>Pelajari materi terstruktur melalui katalog modul.</p></div></div>
+    <div class="item"><div class="num">2</div><div><h3>Eksplorasi</h3><p>Latih konsep melalui simulasi dan video pembelajaran.</p></div></div>
+    <div class="item"><div class="num">3</div><div><h3>Evaluasi</h3><p>Pantau progres, kerjakan kuis, dan selesaikan proyek.</p></div></div>
+   </div>
+  </div>
+  <div class="diagram"><div class="node dark">NALAR · Ruang belajar TJKT</div><div class="arrow">↓</div><div class="grid" style="grid-template-columns:1fr 1fr;gap:9px;margin:0"><div class="node">📚 Materi</div><div class="node">🎬 Video</div><div class="node">🧪 Simulasi</div><div class="node">🤖 Asisten AI</div></div><div class="arrow">↓</div><div class="node">Progres · Kuis · Proyek · Aktivitas belajar</div></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">03 · Sasaran dan tujuan</div><h2>Mendukung proses belajar yang <span style="color:var(--coral)">aktif.</span></h2>
+ <div class="grid">
+  <div class="card"><div class="icon">🎓</div><h3>Untuk siswa</h3><p>Mengakses materi, berlatih, mengeksplorasi perangkat, dan memantau perkembangan belajar secara mandiri.</p></div>
+  <div class="card"><div class="icon">🧑‍🏫</div><h3>Untuk guru</h3><p>Mendapatkan ruang pengelolaan materi serta rancangan menu pembelajaran dalam dashboard guru.</p></div>
+  <div class="card"><div class="icon">🧠</div><h3>Tujuan pembelajaran</h3><p>Mendorong pemahaman konsep TJKT melalui kombinasi bahan ajar dan aktivitas interaktif.</p></div>
+ </div>
+ <div class="statrow"><div class="stat"><b>01</b><small>Belajar mandiri</small></div><div class="stat"><b>02</b><small>Praktik interaktif</small></div><div class="stat"><b>03</b><small>Refleksi progres</small></div></div>
+</section>
+<section class="slide">
+ <div class="kicker">04 · Materi pembelajaran</div><h2>Materi TJKT disusun <span style="color:var(--coral)">bertahap.</span></h2>
+ <p>Di dalam aplikasi tersedia katalog 12 modul pembelajaran. Berikut contoh topik yang tercantum pada data materi aplikasi.</p>
+ <div class="module-grid">
+  <div class="module"><b>MODUL 01</b><span>Pengenalan TJKT</span></div><div class="module"><b>MODUL 02</b><span>Dasar-Dasar Komputer</span></div>
+  <div class="module"><b>MODUL 03</b><span>Sistem Komputer</span></div><div class="module"><b>MODUL 04</b><span>Hardware & Software</span></div>
+  <div class="module"><b>MODUL 05</b><span>Dasar Jaringan Komputer</span></div><div class="module"><b>MODUL 06</b><span>Topologi Jaringan</span></div>
+  <div class="module"><b>MODUL 07</b><span>Perangkat Jaringan</span></div><div class="module"><b>MODUL 08</b><span>Media Transmisi</span></div>
+ </div><p class="note">Katalog aplikasi memuat 12 modul; tampilan ini menampilkan delapan contoh topik awal.</p>
+</section>
+<section class="slide">
+ <div class="kicker">05 · Fitur utama</div><h2>Fitur yang saling <span style="color:var(--coral)">melengkapi.</span></h2>
+ <div class="grid">
+  <div class="card"><div class="icon">📚</div><h3>Katalog modul</h3><p>Daftar materi, subbab, pencarian modul, dan detail pembelajaran.</p></div>
+  <div class="card"><div class="icon">🎥</div><h3>Video pembelajaran</h3><p>Referensi video tutorial untuk topik jaringan, hardware, subnetting, MikroTik, dan Fiber Optic.</p></div>
+  <div class="card"><div class="icon">🖥️</div><h3>Galeri perangkat</h3><p>Eksplorasi perangkat TJKT seperti router, hub, kabel, RAM, Wi-Fi, dan media penyimpanan.</p></div>
+  <div class="card"><div class="icon">🤖</div><h3>Asisten AI</h3><p>Mode demo lokal untuk membantu menjawab pertanyaan seputar materi TJKT.</p></div>
+  <div class="card"><div class="icon">📝</div><h3>Kuis & progres</h3><p>Latihan pemahaman, ringkasan capaian, statistik belajar, dan lencana.</p></div>
+  <div class="card"><div class="icon">🗂️</div><h3>Proyek praktikum</h3><p>Pencatatan tugas dan proyek mandiri beserta status penyelesaiannya.</p></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">06 · Praktik interaktif</div><div class="split">
+  <div><h2>Belajar dengan <span style="color:var(--coral)">simulasi.</span></h2><p>Simulasi membantu siswa mengenali alur kerja dan komponen tanpa harus selalu menggunakan perangkat fisik.</p>
+   <div class="list">
+    <div class="item"><div class="num">01</div><div><h3>Network Simulator</h3><p>Merancang topologi, menghubungkan router, switch, dan PC, serta mencoba pengiriman paket melalui simulasi ping.</p></div></div>
+    <div class="item"><div class="num">02</div><div><h3>PC Assembly Simulator</h3><p>Mempelajari komponen dan urutan perakitan motherboard, CPU, RAM, SSD, serta power supply.</p></div></div>
+    <div class="item"><div class="num">03</div><div><h3>Windows Simulator</h3><p>Mengeksplorasi antarmuka Windows, File Explorer, Start Menu, dan Command Prompt.</p></div></div>
+   </div>
+  </div>
+  <div class="diagram"><div class="node dark">LABORATORIUM DIGITAL</div><div class="node">🌐 Network Simulator <small style="display:block;font-weight:500;color:#727b89">Topologi · Koneksi · Ping</small></div><div class="node">🧰 PC Assembly <small style="display:block;font-weight:500;color:#727b89">Komponen · Perakitan</small></div><div class="node">💻 Windows Simulator <small style="display:block;font-weight:500;color:#727b89">OS · File System · Command Prompt</small></div></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">07 · Alur penggunaan</div><h2>Alur belajar yang <span style="color:var(--coral)">sederhana.</span></h2>
+ <div class="diagram" style="max-width:850px;margin-top:12px">
+  <div class="node dark">Masuk / Daftar akun</div><div class="arrow">↓</div><div class="node">Dashboard siswa</div><div class="arrow">↓</div><div class="grid" style="grid-template-columns:repeat(3,1fr);margin:0;gap:10px"><div class="node">📖 Buka modul</div><div class="node">🧪 Coba simulasi</div><div class="node">🎬 Tonton video</div></div><div class="arrow">↓</div><div class="node">Kerjakan kuis dan proyek</div><div class="arrow">↓</div><div class="node dark">Pantau progres pembelajaran</div>
+ </div>
+ <p class="note">Navigasi siswa mengelompokkan akses utama ke Beranda, Modul, Simulasi, Video, dan Menu.</p>
+</section>
+<section class="slide">
+ <div class="kicker">08 · Pemantauan belajar</div><h2>Perkembangan belajar lebih <span style="color:var(--coral)">terlihat.</span></h2>
+ <div class="grid">
+  <div class="card"><div class="icon">📊</div><h3>Ringkasan progres</h3><p>Menampilkan persentase penyelesaian dan jumlah modul yang telah diselesaikan.</p></div>
+  <div class="card"><div class="icon">⏱️</div><h3>Waktu & konsistensi</h3><p>Ringkasan waktu belajar dan streak untuk memberi gambaran kebiasaan belajar.</p></div>
+  <div class="card"><div class="icon">🏅</div><h3>Statistik & lencana</h3><p>Memberi umpan balik visual atas aktivitas dan pencapaian siswa.</p></div>
+  <div class="card"><div class="icon">🗓️</div><h3>Absensi mandiri</h3><p>Pencatatan check-in kegiatan belajar dan riwayat kehadiran.</p></div>
+  <div class="card"><div class="icon">🔔</div><h3>Notifikasi</h3><p>Tempat melihat pemberitahuan dan informasi aktivitas aplikasi.</p></div>
+  <div class="card"><div class="icon">📁</div><h3>Riwayat proyek</h3><p>Melihat status dan persentase pengerjaan proyek praktikum.</p></div>
+ </div>
+ <p class="note">Catatan: pada versi lokal, absensi dijelaskan aplikasi sebagai catatan mandiri kegiatan belajar siswa.</p>
+</section>
+<section class="slide">
+ <div class="kicker">09 · Peran guru</div><div class="split">
+  <div><h2>Guru tetap menjadi <span style="color:var(--coral)">pengarah.</span></h2><p>NALAR juga menyediakan dashboard guru dengan menu yang disiapkan untuk mendukung pengelolaan pembelajaran.</p><div class="chips"><span class="chip">Kelola materi</span><span class="chip">Video</span><span class="chip">Tugas</span><span class="chip">Kuis</span><span class="chip">Praktik</span><span class="chip">Ujian</span><span class="chip">Nilai & progres</span></div></div>
+  <div class="diagram"><div class="node dark">DASHBOARD GURU</div><div class="grid" style="grid-template-columns:1fr 1fr;margin:0"><div class="node">📚 Kelola materi</div><div class="node">🎬 Video</div><div class="node">📝 Tugas siswa</div><div class="node">❓ Kuis</div><div class="node">🧪 Praktik</div><div class="node">📈 Nilai & progres</div></div><p class="note">Pada kode aplikasi saat ini, menu Kelola Materi sudah memiliki navigasi; beberapa menu lain masih berupa rancangan/tahap pengembangan.</p></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">10 · Teknologi & pengembangan</div><h2>Dibangun sebagai aplikasi <span style="color:var(--coral)">mobile.</span></h2>
+ <div class="grid">
+  <div class="card"><div class="icon">💙</div><h3>Flutter</h3><p>Kerangka kerja antarmuka aplikasi lintas platform yang digunakan pada proyek.</p></div>
+  <div class="card"><div class="icon">🔥</div><h3>Firebase</h3><p>Integrasi Firebase tampak pada autentikasi dan konfigurasi layanan aplikasi.</p></div>
+  <div class="card"><div class="icon">💾</div><h3>Penyimpanan lokal</h3><p>Data dan preferensi tertentu dikelola melalui komponen penyimpanan lokal aplikasi.</p></div>
+ </div>
+ <div class="card" style="margin-top:16px;background:#fff8f6"><h3>Catatan implementasi</h3><p>Sejumlah fitur menggunakan data demo/lokal. Asisten AI berjalan dalam Mode Demo Lokal, sehingga presentasi ini menjelaskan rancangan dan kemampuan yang terlihat pada kode, bukan mengklaim seluruh fitur telah terhubung ke layanan produksi.</p></div>
+</section>
+<section class="slide">
+ <div class="kicker">11 · Nilai tambah</div><h2>Apa yang membuat NALAR <span style="color:var(--coral)">bermanfaat?</span></h2>
+ <div class="split">
+  <div class="list">
+   <div class="item"><div class="num">✓</div><div><h3>Terintegrasi</h3><p>Materi, video, simulasi, dan pemantauan berada dalam satu aplikasi.</p></div></div>
+   <div class="item"><div class="num">✓</div><div><h3>Berorientasi praktik</h3><p>Memberi ruang untuk belajar konsep sekaligus mencoba skenario interaktif.</p></div></div>
+   <div class="item"><div class="num">✓</div><div><h3>Mendukung belajar mandiri</h3><p>Siswa dapat mengakses bahan belajar dan melihat perkembangan belajarnya.</p></div></div>
+  </div>
+  <div class="diagram"><div class="quote">Dari sekadar membaca materi menjadi <em>memahami, mencoba,</em> dan mengevaluasi.</div><div class="chips"><span class="chip">Belajar bermakna</span><span class="chip">Interaktif</span><span class="chip">Terarah</span></div></div>
+ </div>
+</section>
+<section class="slide">
+ <div class="kicker">12 · Pengembangan selanjutnya</div><h2>Ruang untuk terus <span style="color:var(--coral)">bertumbuh.</span></h2>
+ <div class="grid">
+  <div class="card"><div class="icon">🧑‍🏫</div><h3>Pengelolaan guru</h3><p>Menyempurnakan alur pembuatan materi, tugas, kuis, dan penilaian.</p></div>
+  <div class="card"><div class="icon">☁️</div><h3>Sinkronisasi data</h3><p>Memperluas penyimpanan dan sinkronisasi progres antarperangkat.</p></div>
+  <div class="card"><div class="icon">📚</div><h3>Konten ajar</h3><p>Menambah materi, media, latihan, dan evaluasi yang selaras dengan tujuan pembelajaran.</p></div>
+ </div>
+ <p class="note">Bagian ini merupakan rekomendasi arah pengembangan, bukan pernyataan bahwa seluruhnya sudah tersedia.</p>
+</section>
+<section class="slide end">
+ <div class="pill">NALAR · Belajar TJKT</div><h1 class="title" style="margin-top:25px">Belajar lebih aktif.<br><span>Melangkah lebih jauh.</span></h1>
+ <p class="lead" style="max-width:650px">NALAR menghadirkan pengalaman belajar TJKT yang menghubungkan materi, eksplorasi, praktik, dan refleksi dalam satu ruang digital.</p>
+ <div style="margin-top:25px;font-size:1.1rem;font-weight:800">Terima kasih 🙌</div><p class="note">Presentasi aplikasi untuk tugas Pengembangan Bahan Ajar</p>
+</section>
+<div class="footer"><div class="brand">NALAR</div><div class="counter" id="counter">01 / 14</div><div class="controls"><button class="btn" id="prev" aria-label="Sebelumnya">←</button><button class="btn primary" id="next">Lanjut →</button></div></div><div class="progress" id="progress"></div>
+</main>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;
+const counter=document.getElementById('counter'),progress=document.getElementById('progress');
+function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));counter.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');progress.style.width=((index+1)/slides.length*100)+'%';document.getElementById('prev').disabled=index===0;document.getElementById('next').textContent=index===slides.length-1?'Ulangi ↺':'Lanjut →'}
+document.getElementById('prev').addEventListener('click',()=>show(index-1));document.getElementById('next').addEventListener('click',()=>show(index===slides.length-1?0:index+1));
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+let startX=0;document.addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].screenX-startX;if(Math.abs(dx)>60)show(index+(dx<0?1:-1))},{passive:true});
+show(0);
+</script>
+</body></html>
